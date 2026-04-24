@@ -1,0 +1,460 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document sans nom</title>
+	<style>
+		@font-face{
+			font-family: "neue";
+	        src:url("./NeueHaasDisplayMediu.ttf")
+		}
+		
+		@font-face{
+			font-family: "abo";
+			src: url("Aboreto-Regular.ttf")				
+		}
+		body{
+			-webkit-user-select: none;
+  			-ms-user-select: none;
+  			user-select: none;
+			font-family: "neue";
+			background:transparent /*transparent*/;
+			margin: 0;
+			color: white;
+			font-size: 14px;/*16px pour les réponses*/
+			width: 280px;
+			height: 680px;
+			overflow: hidden;
+		}
+		
+		body::-webkit-scrollbar{
+  			display:none;
+		}
+		
+		*{
+  			-webkit-tap-highlight-color: transparent;
+  			outline: none;
+  			scrollbar-width:none;
+  			-ms-overflow-style:none;
+		}
+		
+		.boutton{
+			width: 280px;
+			height: 28px;
+			background-size: cover;
+			background-repeat: no-repeat;
+			display: grid;
+			place-items: center;
+			
+			font-family: "abo";
+			letter-spacing: 1px;
+			font-size: 19px;
+			font-weight: 1000;
+		}
+		
+		.boutton > div{
+			/*top: 30px;*/
+			
+			justify-content: center;
+			text-align: center;
+			
+			font-family: "neue";
+			font-size: 14px!important;
+		}
+		
+		.boutton1{
+			background-image: url("./img/Bandeau1.png");
+		}
+		.boutton2{
+			background-image: url("./img/Bandeau2.png");
+		}
+		.boutton3{
+			background-image: url("./img/Bandeau3.png");
+		}
+		.boutton4{
+			background-image: url("./img/Bandeau4.png");
+		}
+		
+		
+		.bouttonR1 > div{
+			text-decoration: line-through;
+			text-decoration-thickness: 2px;
+  			text-decoration-color: #ff0020;
+		}
+		.bouttonR2 > div{
+			text-decoration: line-through;
+			text-decoration-thickness: 2px;
+  			text-decoration-color: #ff0020;
+		}
+		.bouttonR3 > div{
+			text-decoration: line-through;
+			text-decoration-thickness: 2px;
+  			text-decoration-color: #ff0020;
+		}
+		.bouttonR4 > div{
+			text-decoration: line-through;
+			text-decoration-thickness: 2px;
+  			text-decoration-color: #ff0020;
+		}
+		
+		
+		.bouttonV1{
+			background-image: url("./img/BandeauVert.png");
+		}
+		.bouttonV2{
+			background-image: url("./img/BandeauVert2.png");
+		}
+		.bouttonV3{
+			background-image: url("./img/BandeauVert3.png");
+		}
+		.bouttonV4{
+			background-image: url("./img/BandeauVert4.png");
+		}
+		
+		.flexH{
+			display:flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.centre{
+			display: grid;
+			place-items: center;
+			height: 100%;
+			width: 100%;
+		}
+		
+		#question{
+			font-family: "abo";			
+			letter-spacing: 1px;
+			font-size: 19px;
+			font-weight: 1000;
+			color: #ff0020;
+			text-align: center;
+			line-height: 35px;
+			margin-left: 50px;
+			margin-right: 50px;
+		}
+		
+		#commencer > div{
+			font-family: "abo"!important;			
+			letter-spacing: 1px;
+			font-size: 19px!important;
+			font-weight: 1000;
+			color: #ff0020;
+		}
+		
+		#commencer{
+		}
+		
+		#proQ{
+			font-family: "abo";			
+			letter-spacing: 1px;
+			font-size: 19px;
+			font-weight: 1000;
+			color: #ff0020;
+		}
+		
+		#resultat{
+			font-family: "abo";			
+			letter-spacing: 1px;
+			font-size: 19px;
+			font-weight: 1000;
+			color: #ff0020;
+		}
+		
+		#dessous{
+			letter-spacing: 1px;
+		}
+		
+		#nouveau{
+			font-family: "abo";			
+			letter-spacing: 1px;
+			font-size: 19px;
+			font-weight: 1000;
+			color: #ff0020;
+		}
+	</style>
+</head>
+<body>
+	<div id="accueil">
+		<div class="centre">
+			<div class="flexH">
+				<div style="margin-top: 0px"></div>
+				<div class="" id="commencer" style="margin-top: 0px"><div>COMMENCER LE QUIZ</div></div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="jeu" style="height: 680px; width: 680px; display: none; position: absolute; flex-direction: column; align-items: center">
+		<div class="flexH" style="position: absolute; top:0px">
+			
+			<div id="question" style="margin-bottom: 50px;"></div>
+			
+			<div class="boutton boutton1 quiz" id="un"></div>
+			<div class="boutton boutton2 quiz" id="deux"></div>
+			<div class="boutton boutton3 quiz" id="trois"></div>
+			<div class="boutton boutton4 quiz" id="quattre"></div>
+			<div  id="proQ" style="position:fixed; bottom: 260px">PROCHAINE QUESTION</div>
+		</div>
+	</div>
+	
+	<div id="score" style="display: none">
+		<div class="centre">
+			<div class="flexH">
+				<div id="resultat" style="margin-top:00px">X/10</div><br>
+				<div id="dessous"></div>
+				<div class="" id="nouveau" style="margin-top:50px; color: #ff0020; letter-spacing: 1px">COMMENCER UN NOUVEAU QUIZ</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		function commencer(){
+			document.getElementById("accueil").style.display = "none"
+			document.getElementById("jeu").style.display = "flex"
+			chargerQ(niveau)
+		}
+		
+		document.getElementById("commencer").addEventListener("click",commencer)
+		
+	let question = [
+		{Q:"D’où vient le mot « alchimie » ?", RC:"De l’arabe « al-kīmiyā » (l’art de la transformation)", RI1:"De l’arabe « al-kīmiyā » (l’art de la transformation)", RI2:"Du latin « alchimus » (la matière parfaite)", RI3:"Du grec « alchemos » (le mélange des éléments)", RI4:"Du sanskrit « alakīmya » (la connaissance cachée)"},
+		{Q:"Quel élément est souvent associé à la transformation en alchimie ?", RC:"Le feu", RI1:"Le feu", RI2:"L’air", RI3:"L’eau", RI4:"La terre"},
+		{Q:"Quel métal est associé à la Lune ?", RC:"Argent", RI1:"Argent", RI2:"Fer", RI3:"Cuivre", RI4:"Plomb"},
+		{Q:"Que représente le Mercure en alchimie ?", RC:"La transformation et le lien", RI1:"La transformation et le lien", RI2:"La solidité", RI3:"La destruction", RI4:"La matière brute"},
+		{Q:"Quelle étape du Grand Œuvre est associée à la purification ?", RC:"Albedo", RI1:"Albedo", RI2:"Nigredo", RI3:"Citrinitas", RI4:"Rubedo"},
+		{Q:"Quel symbole représente souvent l’union des opposés ?", RC:"Le serpent qui se mord la queue (ouroboros)", RI1:"Le serpent qui se mord la queue (ouroboros)", RI2:"Le cercle avec un point central (circumpunct)", RI3:"Le triangle alchimique", RI4:"Le signe infini (lemniscate)"},
+		{Q:"Que symbolise le Soufre en alchimie ?", RC:"L’esprit actif", RI1:"L’esprit actif", RI2:"Le corps", RI3:"L’eau", RI4:"La matière impure"},
+		{Q:"Pourquoi les textes alchimiques sont-ils souvent difficiles à comprendre ?", RC:"Ils utilisent des codes symboliques", RI1:"Ils utilisent des codes symboliques", RI2:"Ils n’existent qu’à l’oral", RI3:"Ils ont été mal traduits", RI4:"Ils sont incomplets"},
+		{Q:"Quel est le lien entre alchimie et philosophie ?", RC:"L’alchimie explore aussi la transformation intérieure", RI1:"L’alchimie explore aussi la transformation intérieure", RI2:"Aucun", RI3:"L’alchimie était parfois considérée comme une religion", RI4:"Elle explique la perfection par la philosophie"},
+		{Q:"Que cherche à atteindre un·e alchimiste, au-delà de la matière ?", RC:"La connaissance", RI1:"La connaissance", RI2:"La richesse", RI3:"Le pouvoir", RI4:"Le respect"},
+		{Q:"Quel animal symbolise le cycle éternel en alchimie ?", RC:"Le serpent", RI1:"Le serpent", RI2:"Le lion", RI3:"Le cerf", RI4:"Le corbeau"},
+		{Q:"Dans quel but les alchimistes observaient la nature ?", RC:"Pour la comprendre et s’en inspirer", RI1:"Pour la comprendre et s’en inspirer", RI2:"Pour la maîtriser et la contraindre", RI3:"Pour la mesurer et la classer", RI4:"Pour la transformer et en orienter les effets"},
+		{Q:"Dans le jeu Rubedo, qu’est-ce qui peut le plus perturber ta progression ?", RC:"Les sorts et les vices", RI1:"Les sorts et les vices", RI2:"Le hasard uniquement", RI3:"Les autres alchimistes", RI4:"Le manque de cartes"},
+		{Q:"Quelle civilisation a fortement influencé les premières pratiques alchimiques ?", RC:"Égyptienne", RI1:"Égyptienne", RI2:"Romaine", RI3:"Celte", RI4:"Grecque"},
+		{Q:"Quel terme désigne l’atelier de l’alchimiste ?", RC:"Le laboratoire", RI1:"Le laboratoire", RI2:"Le sanctuaire", RI3:"Le cabinet", RI4:"La crypte"},
+		{Q:"Quel objet est central dans le travail de l’alchimiste ?", RC:"L’athanor", RI1:"L’athanor", RI2:"Le marteau", RI3:"La balance", RI4:"La plume"},
+		{Q:"Que symbolise l’or en alchimie ?", RC:"La perfection et l’accomplissement", RI1:"La perfection et l’accomplissement", RI2:"La richesse", RI3:"La pureté et la lumière", RI4:"L’équilibre des éléments"},
+		{Q:"Quelle couleur est associée à l’étape finale du Grand Œuvre (Rubedo) ?", RC:"Rouge", RI1:"Rouge", RI2:"Noir", RI3:"Blanc", RI4:"Jaune"},
+		{Q:"Quel élément est souvent lié à l’intuition et à la réceptivité ?", RC:"L’eau", RI1:"L’eau", RI2:"La terre", RI3:"Le feu", RI4:"L’air"},
+		{Q:"Quel métal est associé à la planète Mars ?", RC:"Fer", RI1:"Fer", RI2:"Cuivre", RI3:"Étain", RI4:"Plomb"},
+		{Q:"Quel procédé permet de séparer un élément pur d’un mélange par volatilité ?", RC:"Distillation", RI1:"Distillation", RI2:"Sublimation", RI3:"Imbibition", RI4:"Coagulation"},
+		{Q:"Pourquoi l’alchimie utilise-t-elle des images et des symboles ?", RC:"Pour exprimer des idées complexes", RI1:"Pour exprimer des idées complexes", RI2:"Pour décorer les textes", RI3:"Pour garder les connaissances secrètes", RI4:"Pour impressionner"},
+		{Q:"Quel est le principal défi de l’alchimiste ?", RC:"Comprendre les équilibres", RI1:"Comprendre les équilibres", RI2:"Trouver les bons outils", RI3:"Maîtriser les réactions", RI4:"Accumuler des ressources"},
+		{Q:"Dans une quête alchimique, qu’est-ce qui est le plus important ?", RC:"S’adapter et persévérer", RI1:"S’adapter et persévérer", RI2:"Aller vite", RI3:"Ne jamais se tromper", RI4:"Suivre une seule stratégie"},
+		{Q:"Quel type d’expérience propose le jeu Rubedo ?", RC:"Une progression réfléchie et stratégique", RI1:"Une progression réfléchie et stratégique", RI2:"Une compétition rapide et légère", RI3:"Une expérience purement narrative", RI4:"Un défi basé sur la mémoire"},
+	]
+	
+	
+	
+	function get10UniqueNumbers(x) {
+  const arr = [];
+
+  // 1. créer [0, 1, 2, ..., x]
+  for (let i = 0; i <= x; i++) {
+    arr.push(i);
+  }
+
+  // 2. mélanger (Fisher-Yates)
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+
+  // 3. prendre 10 premiers
+  return arr.slice(0, 10);
+}
+		function get4UniqueNumbers(x) {
+  const arr = [];
+
+  // 1. créer [0, 1, 2, ..., x]
+  for (let i = 1; i <= x; i++) {
+    arr.push(i);
+  }
+
+  // 2. mélanger (Fisher-Yates)
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+
+  // 3. prendre 10 premiers
+  return arr.slice(0, 4);
+}
+		
+	let Arr = get10UniqueNumbers(question.length-1)
+	console.log(Arr)
+		let niveau = 0;
+		let ids = ["un","deux","trois","quattre"]
+		let nbJuste = 0
+		let mes = ""
+		
+		
+		function chargerQ(index){
+			 
+			
+			if(niveau === 10){
+				document.getElementById("jeu").style.display = "none"
+				document.getElementById("score").style.display = "flex"
+				document.getElementById("resultat").innerText = nbJuste + "/10"
+				
+				switch(nbJuste){
+					case 0:mes="L’Œuvre n’a pas encore commencé…";
+						break;
+					case 1:mes="Une étincelle apparaît, mais tout reste à découvrir…";
+						break;
+					case 2:mes="Les premières matières sont encore instables…";
+						break;
+					case 3:mes="Tu entres dans l’Œuvre, mais le chemin est long…";
+						break;
+					case 4:mes="Quelques équilibres se dessinent…";
+						break;
+					case 5:mes="Tu progresses, mais l’Œuvre demande encore de la justesse…";
+						break;
+					case 6:mes="Les fondations sont posées, la transformation s’engage…";
+						break;
+					case 7:mes="L’Œuvre prend forme, l’équilibre se laisse entrevoir…";
+						break;
+					case 8:mes="Tu approches d’un état maîtrisé…";
+						break;
+					case 9:mes="La Pierre Philosophale est à portée de main…";
+						break;
+					case 10:mes="Félicitation, l’Œuvre est accomplie.";
+						break;
+				}
+				
+				document.getElementById("dessous").innerText = mes
+				
+				return;
+			}
+			
+			let ordre = get4UniqueNumbers(4)
+			let actuel = question[Arr[index]]
+			clique = false
+			
+			document.getElementById("proQ").style.display = "none"
+			console.log(ordre)
+			console.log(actuel)
+			
+			
+			document.querySelectorAll(".text").forEach(el => {
+				el.remove()
+			})
+			document.querySelectorAll(".quiz").forEach(el => {
+				el.classList.remove(
+        "bouttonV1","bouttonV2","bouttonV3","bouttonV4",
+        "bouttonR1","bouttonR2","bouttonR3","bouttonR4"
+      )
+			})
+			
+			
+			for(let i = 0; i< 4;i++){
+				let div = document.createElement("div")
+				div.classList.add("text")
+				if(actuel["RI"+ordre[i]] == actuel.RC){
+					div.dataset.correct = "V"
+				} else {
+					div.dataset.correct = "F"
+				}
+				div.textContent = actuel["RI"+ordre[i]]
+				document.getElementById(ids[i]).appendChild(div)
+				
+				if (document.querySelector(`#${ids[i]} [data-correct]`)?.dataset.correct === "V") {
+  					document.getElementById(ids[i]).dataset.correct = "V"
+				}else{
+					document.getElementById(ids[i]).dataset.correct = "F"
+					}
+			}
+			
+			document.getElementById("question").innerText = actuel.Q
+			
+			niveau++
+		}
+		
+		let clique = false
+		
+		document.querySelectorAll(".quiz").forEach(el => {
+  el.addEventListener("click", function(event) {
+					if(clique){
+					return;
+					}
+
+    const clicked = event.currentTarget;
+    const clickedT = event.target.closest("div");
+
+    if (!clickedT) return;
+
+    const isCorrect = clickedT.dataset.correct === "V";
+
+    // reset visuel (important)
+	  
+    document.querySelectorAll(".quiz").forEach(q => {
+					
+					
+					
+      q.classList.remove(
+        "bouttonV1","bouttonV2","bouttonV3","bouttonV4",
+        "bouttonR1","bouttonR2","bouttonR3","bouttonR4"
+      );
+    });
+	  document.getElementById("proQ").style.display = "flex"
+	  console.log(isCorrect)
+	  console.log(clickedT.dataset.correct)
+					clique = true
+
+    // si bonne réponse
+    if (isCorrect) {
+					
+nbJuste++
+      if (clicked.classList.contains("boutton1")) clicked.classList.add("bouttonV1");
+      else if (clicked.classList.contains("boutton2")) clicked.classList.add("bouttonV2");
+      else if (clicked.classList.contains("boutton3")) clicked.classList.add("bouttonV3");
+      else if (clicked.classList.contains("boutton4")) clicked.classList.add("bouttonV4");
+		
+
+    } 
+    // si mauvaise réponse
+    else {
+
+      if (clicked.classList.contains("boutton1")) clicked.classList.add("bouttonR1");
+      else if (clicked.classList.contains("boutton2")) clicked.classList.add("bouttonR2");
+      else if (clicked.classList.contains("boutton3")) clicked.classList.add("bouttonR3");
+      else if (clicked.classList.contains("boutton4")) clicked.classList.add("bouttonR4");
+
+      // afficher la bonne réponse
+      document.querySelectorAll(".quiz").forEach(btn => {
+        const div = btn.querySelector("div");
+        if (div && div.dataset.correct === "V") {
+
+          if (btn.classList.contains("boutton1")) btn.classList.add("bouttonV1");
+          else if (btn.classList.contains("boutton2")) btn.classList.add("bouttonV2");
+          else if (btn.classList.contains("boutton3")) btn.classList.add("bouttonV3");
+          else if (btn.classList.contains("boutton4")) btn.classList.add("bouttonV4");
+
+        }
+      });
+
+    }
+
+  });
+	
+	
+});
+		function charger(){
+			chargerQ(niveau)
+		}
+		function menu(){
+			Arr = get10UniqueNumbers(question.length-1)
+	
+		 niveau = 0;
+			nbJuste = 0
+			document.getElementById("score").style.display = "none"
+			document.getElementById("accueil").style.display = "flex"
+		}
+		document.getElementById("proQ").addEventListener("click",charger)
+		
+		document.getElementById("nouveau").addEventListener("click",menu)
+	
+	</script>
+</body>
+</html>
