@@ -200,7 +200,7 @@
 			<div class="boutton boutton2 quiz" id="deux"></div>
 			<div class="boutton boutton3 quiz" id="trois"></div>
 			<div class="boutton boutton4 quiz" id="quattre" style="position: relative"></div>
-			<mon-tag  id="proQ" style="position: absolute; top: 430px; font-size: 16px;">PROCHAINE QUESTION</mon-tag>
+			<mon-tag  id="proQ" style="position: absolute; top: 430px; font-size: 16px;">PROCHAINE ÉTAPE</mon-tag>
 		</div>
 	</div>
 	
@@ -403,7 +403,14 @@
         "bouttonR1","bouttonR2","bouttonR3","bouttonR4"
       );
     });
+					if(niveau != 10){
+					document.getElementById("proQ").innerText = "PROCHAINE ÉTAPE"
 	  document.getElementById("proQ").style.display = "flex"
+					
+					} else {
+					document.getElementById("proQ").innerText = "Découvrir le résultat"
+					document.getElementById("proQ").style.display = "flex"
+					}
 	  console.log(isCorrect)
 	  console.log(clickedT.dataset.correct)
 					clique = true
