@@ -21,8 +21,8 @@
 			background:transparent /*transparent*/;
 			margin: 0;
 			color: white;
-			font-size: 17px;/*16px pour les réponses*/
-			width: 680px;
+			font-size: 14px;/*16px pour les réponses*/
+			width: 280px;
 			height: 680px;
 			overflow: hidden;
 		}
@@ -39,17 +39,16 @@
 		}
 		
 		.boutton{
-			width: 600px;
+			width: 280px;
 			height: 60px;
 			background-size: cover;
 			background-repeat: no-repeat;
-			cursor: pointer;
 			display: grid;
 			place-items: center;
 			
 			font-family: "abo";
 			letter-spacing: 1px;
-			font-size: 22px;
+			font-size: 19px;
 			font-weight: 1000;
 		}
 		
@@ -60,7 +59,10 @@
 			text-align: center;
 			
 			font-family: "neue";
-			font-size: 17px!important;
+			font-size: 14px!important;
+			
+			margin-left: 20px;
+			margin-right: 20px;
 		}
 		
 		.boutton1{
@@ -78,35 +80,35 @@
 		
 		
 		.bouttonR1 > div{
-			/*
+			
 			text-decoration: line-through;
 			text-decoration-thickness: 3px;
-  			text-decoration-color: #ff0020;
-			*/
+  			text-decoration-color: white;
+			
 			color: #ff0020;
 		}
 		.bouttonR2 > div{
-			/*
+			
 			text-decoration: line-through;
 			text-decoration-thickness: 3px;
-  			text-decoration-color: #ff0020;
-			*/
+  			text-decoration-color: white;
+			
 			color: #ff0020;
 		}
 		.bouttonR3 > div{
-			/*
+			
 			text-decoration: line-through;
 			text-decoration-thickness: 3px;
-  			text-decoration-color: #ff0020;
-			*/
+  			text-decoration-color: white;
+			
 			color: #ff0020;
 		}
 		.bouttonR4 > div{
-			/*
+			
 			text-decoration: line-through;
 			text-decoration-thickness: 3px;
-  			text-decoration-color: #ff0020;
-			*/
+  			text-decoration-color: white;
+			
 			color: #ff0020;
 		}
 		
@@ -139,31 +141,28 @@
 		#question{
 			font-family: "abo";			
 			letter-spacing: 1px;
-			font-size: 22px;
+			font-size: 16px;
 			font-weight: 1000;
 			color: #ff0020;
 			text-align: center;
-			line-height: 35px;
-			margin-left: 50px;
-			margin-right: 50px;
+			line-height: 25px;
 		}
 		
 		#commencer > div{
 			font-family: "abo"!important;			
 			letter-spacing: 1px;
-			font-size: 22px!important;
+			font-size: 19px!important;
 			font-weight: 1000;
 			color: #ff0020;
 		}
 		
 		#commencer{
-			cursor: pointer;
 		}
 		
 		#proQ{
 			font-family: "abo";			
 			letter-spacing: 1px;
-			font-size: 22px;
+			font-size: 19px;
 			font-weight: 1000;
 			color: #ff0020;
 		}
@@ -171,22 +170,26 @@
 		#resultat{
 			font-family: "abo";			
 			letter-spacing: 1px;
-			font-size: 22px;
+			font-size: 19px;
 			font-weight: 1000;
 			color: #ff0020;
 		}
 		
 		#dessous{
 			letter-spacing: 1px;
+			text-align: center;
 		}
 		
 		#nouveau{
 			font-family: "abo";			
 			letter-spacing: 1px;
-			font-size: 22px;
+			font-size: 19px;
 			font-weight: 1000;
 			color: #ff0020;
-			cursor: pointer;
+		}
+		
+		mon-tag{
+			display: block;
 		}
 	</style>
 </head>
@@ -200,7 +203,7 @@
 		</div>
 	</div>
 	
-	<div id="jeu" style="height: 680px; width: 680px; display: none; position: absolute; flex-direction: column; align-items: center">
+	<div id="jeu" style="height: 680px; width: 280px; display: none; position: absolute; flex-direction: column; align-items: center">
 		<div class="flexH" style="position: absolute; top:0px">
 			
 			<div id="question" style="margin-bottom: 50px;"></div>
@@ -208,8 +211,8 @@
 			<div class="boutton boutton1 quiz" id="un"></div>
 			<div class="boutton boutton2 quiz" id="deux"></div>
 			<div class="boutton boutton3 quiz" id="trois"></div>
-			<div class="boutton boutton4 quiz" id="quattre"></div>
-			<div  id="proQ" style="position:fixed; bottom: 260px; cursor: pointer">PROCHAINE ÉTAPE</div>
+			<div class="boutton boutton4 quiz" id="quattre" style="position: relative"></div>
+			<mon-tag  id="proQ" style="position: absolute; top: 430px; font-size: 16px;">PROCHAINE ÉTAPE</mon-tag>
 		</div>
 	</div>
 	
@@ -218,7 +221,7 @@
 			<div class="flexH">
 				<div id="resultat" style="margin-top:00px">X/10</div><br>
 				<div id="dessous"></div>
-				<div class="" id="nouveau" style="margin-top:50px; cursor: pointer; color: #ff0020; letter-spacing: 1px">PRÊT·E POUR UNE NOUVELLE ÉPREUVE ?</div>
+				<div class="" id="nouveau" style="margin-top:50px; color: #ff0020; letter-spacing: 1px; line-height: 25px; text-align: center; font-size: 16px">PRÊT·E POUR UNE <br>NOUVELLE ÉPREUVE ?</div>
 			</div>
 		</div>
 	</div>
@@ -233,31 +236,31 @@
 		document.getElementById("commencer").addEventListener("click",commencer)
 		
 	let question = [
-		{Q:"D’où vient le mot « alchimie » ?", RC:"De l’arabe « al-kīmiyā » (l’art de la transformation)", RI1:"De l’arabe « al-kīmiyā » (l’art de la transformation)", RI2:"Du latin « alchimus » (la matière parfaite)", RI3:"Du grec « alchemos » (le mélange des éléments)", RI4:"Du sanskrit « alakīmya » (la connaissance cachée)"},
-		{Q:"Quel élément est souvent associé à<br>la transformation en alchimie ?", RC:"Le feu", RI1:"Le feu", RI2:"L’air", RI3:"L’eau", RI4:"La terre"},
-		{Q:"Quel métal est associé à la Lune ?", RC:"Argent", RI1:"Argent", RI2:"Fer", RI3:"Cuivre", RI4:"Plomb"},
+		{Q:"D’où vient le mot « alchimie » ?", RC:"De l’arabe « al-kīmiyā »<br>(l’art de la transformation)", RI1:"De l’arabe « al-kīmiyā »<br>(l’art de la transformation)", RI2:"Du latin « alchimus »<br>(la matière parfaite)", RI3:"Du grec « alchemos »<br>(le mélange des éléments)", RI4:"Du sanskrit « alakīmya »<br>(la connaissance cachée)"},
+		{Q:"Quel élément est souvent associé à la transformation<br>en alchimie ?", RC:"Le feu", RI1:"Le feu", RI2:"L’air", RI3:"L’eau", RI4:"La terre"},
+		{Q:"Quel métal est associé<br>à la Lune ?", RC:"Argent", RI1:"Argent", RI2:"Fer", RI3:"Cuivre", RI4:"Plomb"},
 		{Q:"Que représente le Mercure en alchimie ?", RC:"La transformation et le lien", RI1:"La transformation et le lien", RI2:"La solidité", RI3:"La destruction", RI4:"La matière brute"},
-		{Q:"Quelle étape du Grand Œuvre est<br>associée à la purification ?", RC:"Albedo", RI1:"Albedo", RI2:"Nigredo", RI3:"Citrinitas", RI4:"Rubedo"},
-		{Q:"Quel symbole représente souvent<br>l’union des opposés ?", RC:"Le serpent qui se mord la queue (ouroboros)", RI1:"Le serpent qui se mord la queue (ouroboros)", RI2:"Le cercle avec un point central (circumpunct)", RI3:"Le triangle alchimique", RI4:"Le signe infini (lemniscate)"},
-		{Q:"Que symbolise le Soufre en alchimie ?", RC:"L’esprit actif", RI1:"L’esprit actif", RI2:"Le corps", RI3:"L’eau", RI4:"La matière impure"},
+		{Q:"Quelle étape du Grand Œuvre est associée<br>à la purification ?", RC:"Albedo", RI1:"Albedo", RI2:"Nigredo", RI3:"Citrinitas", RI4:"Rubedo"},
+		{Q:"Quel symbole représente souvent l’union<br>des opposés ?", RC:"Le serpent qui se mord la queue (ouroboros)", RI1:"Le serpent qui se mord la queue (ouroboros)", RI2:"Le cercle avec un point central (circumpunct)", RI3:"Le triangle alchimique", RI4:"Le signe infini (lemniscate)"},
+		{Q:"Que symbolise le Soufre<br>en alchimie ?", RC:"L’esprit actif", RI1:"L’esprit actif", RI2:"Le corps", RI3:"L’eau", RI4:"La matière impure"},
 		{Q:"Pourquoi les textes alchimiques sont-ils souvent difficiles à comprendre ?", RC:"Ils utilisent des codes symboliques", RI1:"Ils utilisent des codes symboliques", RI2:"Ils n’existent qu’à l’oral", RI3:"Ils ont été mal traduits", RI4:"Ils sont incomplets"},
-		{Q:"Quel est le lien entre<br>alchimie et philosophie ?", RC:"L’alchimie explore aussi la transformation intérieure", RI1:"L’alchimie explore aussi la transformation intérieure", RI2:"Aucun", RI3:"L’alchimie était parfois considérée comme une religion", RI4:"Elle explique la perfection par la philosophie"},
-		{Q:"Que cherche à atteindre un·e alchimiste, au-delà de la matière ?", RC:"La connaissance", RI1:"La connaissance", RI2:"La richesse", RI3:"Le pouvoir", RI4:"Le respect"},
-		{Q:"Quel animal symbolise<br>le cycle éternel en alchimie ?", RC:"Le serpent", RI1:"Le serpent", RI2:"Le lion", RI3:"Le cerf", RI4:"Le corbeau"},
-		{Q:"Dans quel but est-ce que les alchimistes observaient la nature ?", RC:"Pour la comprendre et s’en inspirer", RI1:"Pour la comprendre et s’en inspirer", RI2:"Pour la maîtriser et la contraindre", RI3:"Pour la mesurer et la classer", RI4:"Pour la transformer et en orienter les effets"},
-		{Q:"Dans le jeu Rubedo, qu’est-ce qui peut<br>le plus perturber ta progression ?", RC:"Les sorts et les vices", RI1:"Les sorts et les vices", RI2:"Le hasard uniquement", RI3:"Les autres alchimistes", RI4:"Le manque de cartes"},
+		{Q:"Quel est le lien entre alchimie et philosophie ?", RC:"L’alchimie explore aussi la transformation intérieure", RI1:"L’alchimie explore aussi la transformation intérieure", RI2:"Aucun", RI3:"L’alchimie était parfois considérée comme une religion", RI4:"Elle explique la perfection<br>par la philosophie"},
+		{Q:"Que cherche à atteindre un·e alchimiste, au-delà<br>de la matière ?", RC:"La connaissance", RI1:"La connaissance", RI2:"La richesse", RI3:"Le pouvoir", RI4:"Le respect"},
+		{Q:"Quel animal symbolise le cycle éternel en alchimie ?", RC:"Le serpent", RI1:"Le serpent", RI2:"Le lion", RI3:"Le cerf", RI4:"Le corbeau"},
+		{Q:"Dans quel but est-ce que les alchimistes observaient la nature ?", RC:"Pour la comprendre<br>et s’en inspirer", RI1:"Pour la comprendre<br>et s’en inspirer", RI2:"Pour la maîtriser et la contraindre", RI3:"Pour la mesurer et la classer", RI4:"Pour la transformer<br>et en orienter les effets"},
+		{Q:"Dans le jeu Rubedo, qu’est-ce qui peut le plus perturber ta progression ?", RC:"Les sorts et les vices", RI1:"Les sorts et les vices", RI2:"Le hasard uniquement", RI3:"Les autres alchimistes", RI4:"Le manque de cartes"},
 		{Q:"Quelle civilisation a fortement influencé les premières pratiques alchimiques ?", RC:"Égyptienne", RI1:"Égyptienne", RI2:"Romaine", RI3:"Celte", RI4:"Grecque"},
-		{Q:"Quel terme désigne l’atelier<br>de l’alchimiste ?", RC:"Le laboratoire", RI1:"Le laboratoire", RI2:"Le sanctuaire", RI3:"Le cabinet", RI4:"La crypte"},
-		{Q:"Quel objet est central dans<br>le travail de l’alchimiste ?", RC:"L’athanor", RI1:"L’athanor", RI2:"Le marteau", RI3:"La balance", RI4:"La plume"},
-		{Q:"Que symbolise l’or en alchimie ?", RC:"La perfection et l’accomplissement", RI1:"La perfection et l’accomplissement", RI2:"La richesse", RI3:"La pureté et la lumière", RI4:"L’équilibre des éléments"},
+		{Q:"Quel terme désigne l’atelier de l’alchimiste ?", RC:"Le laboratoire", RI1:"Le laboratoire", RI2:"Le sanctuaire", RI3:"Le cabinet", RI4:"La crypte"},
+		{Q:"Quel objet est central dans le travail de l’alchimiste ?", RC:"L’athanor", RI1:"L’athanor", RI2:"Le marteau", RI3:"La balance", RI4:"La plume"},
+		{Q:"Que symbolise l’or<br>en alchimie ?", RC:"La perfection et l’accomplissement", RI1:"La perfection et l’accomplissement", RI2:"La richesse", RI3:"La pureté et la lumière", RI4:"L’équilibre des éléments"},
 		{Q:"Quelle couleur est associée à l’étape finale du Grand Œuvre (Rubedo) ?", RC:"Rouge", RI1:"Rouge", RI2:"Noir", RI3:"Blanc", RI4:"Jaune"},
-		{Q:"Quel élément est souvent lié<br>à l’intuition et à la réceptivité ?", RC:"L’eau", RI1:"L’eau", RI2:"La terre", RI3:"Le feu", RI4:"L’air"},
-		{Q:"Quel métal est associé à la planète Mars ?", RC:"Fer", RI1:"Fer", RI2:"Cuivre", RI3:"Étain", RI4:"Plomb"},
+		{Q:"Quel élément est souvent lié à l’intuition et<br>à la réceptivité ?", RC:"L’eau", RI1:"L’eau", RI2:"La terre", RI3:"Le feu", RI4:"L’air"},
+		{Q:"Quel métal est associé<br>à la planète Mars ?", RC:"Fer", RI1:"Fer", RI2:"Cuivre", RI3:"Étain", RI4:"Plomb"},
 		{Q:"Quel procédé permet de séparer un élément pur d’un mélange par volatilité ?", RC:"Distillation", RI1:"Distillation", RI2:"Sublimation", RI3:"Imbibition", RI4:"Coagulation"},
-		{Q:"Pourquoi l’alchimie utilise-t-elle<br>des images et des symboles ?", RC:"Pour exprimer des idées complexes", RI1:"Pour exprimer des idées complexes", RI2:"Pour décorer les textes", RI3:"Pour garder les connaissances secrètes", RI4:"Pour impressionner"},
-		{Q:"Quel est le principal défi de l’alchimiste ?", RC:"Comprendre les équilibres", RI1:"Comprendre les équilibres", RI2:"Trouver les bons outils", RI3:"Maîtriser les réactions", RI4:"Accumuler des ressources"},
-		{Q:"Dans une quête alchimique, qu’est-ce<br>qui est le plus important ?", RC:"S’adapter et persévérer", RI1:"S’adapter et persévérer", RI2:"Aller vite", RI3:"Ne jamais se tromper", RI4:"Suivre une seule stratégie"},
-		{Q:"Quel type d’expérience propose<br>le jeu Rubedo ?", RC:"Une progression réfléchie et stratégique", RI1:"Une progression réfléchie et stratégique", RI2:"Une compétition rapide et légère", RI3:"Une expérience purement narrative", RI4:"Un défi basé sur la mémoire"},
+		{Q:"Pourquoi l’alchimie<br>utilise-t-elle des images<br>et des symboles ?", RC:"Pour exprimer des idées complexes", RI1:"Pour exprimer des idées complexes", RI2:"Pour décorer les textes", RI3:"Pour garder les connaissances secrètes", RI4:"Pour impressionner"},
+		{Q:"Quel est le principal défi<br>de l’alchimiste ?", RC:"Comprendre les équilibres", RI1:"Comprendre les équilibres", RI2:"Trouver les bons outils", RI3:"Maîtriser les réactions", RI4:"Accumuler des ressources"},
+		{Q:"Dans une quête alchimique, qu’est-ce qui est<br>le plus important ?", RC:"S’adapter et persévérer", RI1:"S’adapter et persévérer", RI2:"Aller vite", RI3:"Ne jamais se tromper", RI4:"Suivre une seule stratégie"},
+		{Q:"Quel type d’expérience propose le jeu Rubedo ?", RC:"Une progression réfléchie<br>et stratégique", RI1:"Une progression réfléchie<br>et stratégique", RI2:"Une compétition rapide et légère", RI3:"Une expérience<br>purement narrative", RI4:"Un défi basé sur la mémoire"},
 	]
 	
 	
@@ -314,31 +317,31 @@
 				document.getElementById("resultat").innerText = nbJuste + "/10"
 				
 				switch(nbJuste){
-					case 0:mes="L’Œuvre n’a pas encore commencé…";
+					case 0:mes="L’Œuvre n’a pas encore commencé…";//
 						break;
-					case 1:mes="Une étincelle apparaît, mais tout reste à découvrir…";
+					case 1:mes="Une étincelle apparaît,<br>mais tout reste à découvrir…";//
 						break;
-					case 2:mes="Les premières matières sont encore instables…";
+					case 2:mes="Les premières matières sont<br>encore instables…";//
 						break;
-					case 3:mes="Tu entres dans l’Œuvre, mais le chemin est long…";
+					case 3:mes="Tu entres dans l’Œuvre,<br>mais le chemin est long…";//
 						break;
-					case 4:mes="Quelques équilibres se dessinent…";
+					case 4:mes="Quelques équilibres se dessinent…";//
 						break;
-					case 5:mes="Tu progresses, mais l’Œuvre demande encore de la justesse…";
+					case 5:mes="Tu progresses, mais l’Œuvre demande encore de la justesse…";//
 						break;
-					case 6:mes="Les fondations sont posées, la transformation s’engage…";
+					case 6:mes="Les fondations sont posées,<br>la transformation s’engage…";//
 						break;
-					case 7:mes="L’Œuvre prend forme, l’équilibre se laisse entrevoir…";
+					case 7:mes="L’Œuvre prend forme,<br>l’équilibre se laisse entrevoir…";//
 						break;
-					case 8:mes="Tu approches d’un état maîtrisé…";
+					case 8:mes="Tu approches d’un état maîtrisé…";//
 						break;
-					case 9:mes="La Pierre Philosophale est à portée de main…";
+					case 9:mes="La Pierre Philosophale est<br>à portée de main…";//
 						break;
-					case 10:mes="Félicitation, l’Œuvre est accomplie.";
+					case 10:mes="Félicitation, l’Œuvre est accomplie.";//
 						break;
 				}
 				
-				document.getElementById("dessous").innerText = mes
+				document.getElementById("dessous").innerHTML = mes
 				
 				return;
 			}
@@ -371,7 +374,7 @@
 				} else {
 					div.dataset.correct = "F"
 				}
-				div.textContent = actuel["RI"+ordre[i]]
+				div.innerHTML = actuel["RI"+ordre[i]]
 				document.getElementById(ids[i]).appendChild(div)
 				
 				if (document.querySelector(`#${ids[i]} [data-correct]`)?.dataset.correct === "V") {
@@ -412,7 +415,14 @@
         "bouttonR1","bouttonR2","bouttonR3","bouttonR4"
       );
     });
+					if(niveau != 10){
+					document.getElementById("proQ").innerText = "PROCHAINE ÉTAPE"
 	  document.getElementById("proQ").style.display = "flex"
+					
+					} else {
+					document.getElementById("proQ").innerText = "Découvrir le résultat"
+					document.getElementById("proQ").style.display = "flex"
+					}
 	  console.log(isCorrect)
 	  console.log(clickedT.dataset.correct)
 					clique = true
@@ -470,6 +480,41 @@ nbJuste++
 		
 		document.getElementById("nouveau").addEventListener("click",menu)
 	
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					function preloadGameImages(){
+
+  var imgs = [
+
+  // RECORDS
+  "./img/Bandeau1.png",
+  "./img/Bandeau2.png",
+  "./img/Bandeau3.png",
+  "./img/Bandeau4.png",
+					
+  // RECORDS U
+  "./img/BandeauVert.png",
+  "./img/BandeauVert2.png",
+  "./img/BandeauVert3.png",
+  "./img/BandeauVert4.png",
+
+];
+	
+	for(let i=0;i<imgs.length;i++){
+    let img = new Image();
+    img.src = imgs[i];
+  }
+
+}
+					
+					preloadGameImages()
 	</script>
 </body>
 </html>
